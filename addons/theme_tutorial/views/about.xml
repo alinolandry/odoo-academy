@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+    <!-- === About Page === -->
+    <template name="About page" id="website.about" page="True">
+        <t t-call="website.layout">
+          <div id="wrap">
+              <div class="container">
+                <h1>About us </h1>
+                <p>  <strong> TEAM EXPERT </strong> is a company who help you to grow your business with Odoo solution 
+                </p>
+                <!-- === Snippets' area === -->
+                <div class="oe_structure" />
+              </div>
+          </div>
+        </t>
+    </template>
+  </data>
+</odoo>
