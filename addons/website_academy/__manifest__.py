@@ -3,8 +3,9 @@
   'description': 'This is my Website Odoo module .',
   'version':'1.0',
   'author':'Alain NOUTCHOMWO',
+  'website':'https:wwww.team-expert.com',
   'summary': 'This modules help you to build your website from scrach',
   'data': [],
-  'category': 'Theme/Creative',
-  'depends': ['website'],
+  'category': 'Test',
+  'depends': ['base'],
 }
