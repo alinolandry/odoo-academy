@@ -1,3 +1,6 @@
+# Objectif
+This is the simple Odoo project who help to build my addons and help me to be an Odoo ERP Developper
+
 # Usage
 
 Change the folder permission to make sure that the container is able to access the directory:
@@ -30,7 +33,7 @@ To change Odoo configuration, edit file: **etc/odoo.conf**.
 # docker-compose.yml
 
 * odoo:10.0
-* postgres:9.4
+* postgres:9.5
 
 # Screenshots
 
