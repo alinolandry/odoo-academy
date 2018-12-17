@@ -14,6 +14,22 @@ class Course(models.Model):
 	responsible_id = fields.Many2one("res.users", ondelete="set null", string="Responsable", index=False)
 	session_ids = fields.One2many("openacademy.session", "course_id", string="Sessions")
 
+	#Re-implemente copy method because the name of course is unique so we cannot duplicate the course
+	@api.multi 
+	def copy(self, default=None):
+		default = dict(default or {})
+
+		copied_count = self.search_count(
+			[('name', '=like', u"Copy of {}%".format(self.name))]
+		)
+		if not copied_count:
+			new_name = u"Copy of {}".format(self.name)
+		else:
+			new_name = u"Copy of {} ({})".format(self.name, copied_count)
+
+		default['name'] = new_name
+		return super(Course, self).copy(default)
+
 	# Contrais who check if the name of course is unique and if the the title and the description are differents
 	_sql_constraints = [
 		(
