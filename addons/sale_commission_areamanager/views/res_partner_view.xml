@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_area_manager" model="ir.ui.view">
+        <field name="name">res.partner.form.area.manager</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="sale_commission.view_partner_form_agent" />
+        <field name="priority" eval="18"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='agent_information']/group[1]/group[2]" position="after">
+                <group>
+                    <field name="area_manager"/>
+                    <field name="area_manager_id" attrs="{'invisible': [('area_manager', '=', True)]}" context="{'default_agent': True, 'default_area_manager': True}"/>
+                    <field name="commission_for_areamanager" attrs="{'invisible': [('area_manager', '=', True)]}"/>
+                </group>
+                <group colspan="4" string="Related Agents" attrs="{'invisible': [('area_manager', '=', False)]}">
+                    <field name="area_manager_sub_agent_ids" nolabel="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
