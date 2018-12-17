@@ -14,6 +14,22 @@ class Course(models.Model):
 	responsible_id = fields.Many2one("res.users", ondelete="set null", string="Responsable", index=False)
 	session_ids = fields.One2many("openacademy.session", "course_id", string="Sessions")
 
+	# Contrais who check if the name of course is unique and if the the title and the description are differents
+	_sql_constraints = [
+		(
+			'name_description_check',
+			'CHECK(name != description)',
+			'The Title of the course should not be the desciption'
+		),
+		(
+			'name_unique',
+			'UNIQUE(name)',
+			'The course title must be unique',
+		),
+	]
+	
+
+
 class Session(models.Model):
 	"""
 		This model manage session of courses
