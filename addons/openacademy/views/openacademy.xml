@@ -130,19 +130,46 @@
 			<field name="name">session.tree</field>
 			<field name="model">openacademy.session</field>
 			<field name="arch" type="xml">
-				<tree string="Session Tree">
+				<tree string="Session Tree" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
 					<field name="name"/>
 					<field name="course_id"/>
+					<field name="duration" invisible="1"/>
 					<field name="taken_seats" widget="progressbar" />
 				</tree>
 			</field>
 		</record>
 
+		<!-- Calendar view -->
+		
+		<record id="session_calendar_view" model="ir.ui.view">
+			<field name="name">session.calendar</field>
+			<field name="model">openacademy.session</field>
+			<field name="arch" type="xml">
+				<calendar string="Session Calendar" date_start="start_date" date_stop="end_date" color="instructor_id">
+					<field name="name" />
+				</calendar>
+			</field>
+		</record>
+		
+		<!-- Graph view -->
+		
+		<record id="openacademy_session_graph_view" model="ir.ui.view">
+			<field name="name">openacademy.session.graph</field>
+			<field name="model">openacademy.session</field>
+			<field name="arch" type="xml">
+				<graph string="Participation by Courses">
+					<field name="course_id"/>
+					<field name="attendees_count" type="measure"/>
+				</graph>	
+			</field>
+		</record>
+		
+
 		<record model="ir.actions.act_window" id="session_list_action">
 			<field name="name">Sessions</field>
 			<field name="res_model">openacademy.session</field>
 			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,calendar,graph</field>
 		</record>
 
 		<menuitem id="session_menu" name="Sessions" parent="openacademy_menu" action="session_list_action" />
