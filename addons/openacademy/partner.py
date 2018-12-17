@@ -2,8 +2,8 @@
 from odoo import fields, models
 
 class Partner(models.Model):
-	_inherit = "res.partner"
-	_name = "openacedemy.partner"
+	
+        _inherit = "res.partner"
 	
 	instructor = fields.Boolean("Instructor", default=False)
 

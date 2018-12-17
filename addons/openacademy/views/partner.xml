@@ -4,17 +4,18 @@
 		<!-- Add instructor field to existing view -->
 		<record model="ir.ui.view" id="partner_instructor_form_view">
 			<field name="name">partner.instructor</field>
-			<field name="model">openacedemy.partner</field>
+			<field name="model">res.partner</field>
 			<field name="inherit_id" ref="base.view_partner_form"/>
 			<field name="arch" type="xml">
-				<notebook position="inside">
-					<page string="Sessions">
+				<!-- tu dois hériter de notebook de cette manière -->
+				<xpath expr="//notebook" position="inside">
+				    <page string="Sessions">
 						<group>
 							<field name="instructor"/>
 							<field name="session_ids"/>
 						</group>
 					</page>
-				</notebook>
+				</xpath>
 			</field>
 		</record>
 
